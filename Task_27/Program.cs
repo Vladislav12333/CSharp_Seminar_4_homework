@@ -3,14 +3,24 @@
 // 82 -> 10
 // 9012 -> 12
 
-Console.Write("Введите число: ");
-int number = int.Parse(Console.ReadLine());
-
-int sum = 0;
-while (number != 0)
+int Prompt(string message)
 {
-    sum += number % 10; // берем последнюю цифру и добавляем к сумме
-    number /= 10; // отбрасываем последнюю цифру
+    System.Console.Write(message); // Выводим приглашение ко вводу
+    string readInput = System.Console.ReadLine();
+    int result = int.Parse(readInput); // Приводим к числу
+    return result; // Возвращаем результат
 }
 
-Console.WriteLine($"Сумма цифр в числе: {sum}");
+int SumAllDigit(int number)
+{
+    int result = 0;
+    while (number > 0)
+    {
+        result += number % 10;
+        number = number /10;
+    }
+    return result;
+}
+
+int number = Prompt("Введите число: ");
+System.Console.WriteLine($"Сумма всех чисел в цифре {number} = {SumAllDigit(number)}");

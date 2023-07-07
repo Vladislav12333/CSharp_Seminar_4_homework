@@ -2,17 +2,37 @@
 // 3, 5 -> 243 (3⁵)
 // 2, 4 -> 16
 
-Console.Write("Введите число А: ");
-double a = double.Parse(Console.ReadLine());
-
-Console.Write("Введите степень В: ");
-int b = int.Parse(Console.ReadLine());
-
-double result = 1;
-
-for (int i = 0; i < b; i++)
+int Prompt(string message)
 {
-    result *= a;
+    System.Console.Write(message); // Выводим приглашение ко вводу
+    string readInput = System.Console.ReadLine(); // Вводим значение
+    int result = int.Parse(readInput); // Приводим к числу
+    return result; // Возвращаем результат
 }
 
-Console.WriteLine($"{a} в степени {b} равно {result}");
+int Power(int powerBase, int exponent)
+{
+    int power = 1;
+    for (int i = 0; i < exponent; i++)
+    {
+        power *= powerBase;
+    }
+    return power;
+}
+
+bool ValidateExponent(int exponent)
+{
+    if (exponent < 0)
+    {
+        System.Console.WriteLine("Показатель не должен быть меньше нуля");
+        return false;
+    }
+    return true;
+}
+
+int powerBase = Prompt("Введите основание: ");
+int exponent = Prompt("Введите показатель: ");
+if (ValidateExponent(exponent))
+{
+    System.Console.WriteLine($"Число {powerBase} в степени {exponent} равно{Power(powerBase, exponent)}");
+}
